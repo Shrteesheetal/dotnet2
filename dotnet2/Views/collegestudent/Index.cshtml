@@ -1,0 +1,53 @@
+﻿@model IEnumerable<collegemanagementfirstproject.Models.collegestudentModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Addcollegestudent">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.age)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.rollno)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.age)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.rollno)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Editcollegestudent", new {  id=item.Id}) |
+                @Html.ActionLink("Detail", "Detailcollegestudent", new { id=item.Id }) |
+                @Html.ActionLink("Delete", "Deletecollegestudent", new { test=item.Id })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
