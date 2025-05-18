@@ -1,0 +1,83 @@
+﻿
+@{
+    ViewData["Title"] = "IndexforJs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>IndexforJs</h1>
+
+<div class="container mt-5">
+    <h2 class="mb-4">Faculty Registration Form</h2>
+    
+
+        <div class="col-md-4">
+
+        <input type="hidden" id="FacultyID ">
+        </div>
+
+        <div class="col-md-4">
+        <label for="firstName" class="form-label">FirstName</label>
+        <input type="text" class="form-control" id="firstName" name="firstName" required>
+        </div>
+
+        <div class="col-md-4">
+        <label for="lastName" class="form-label">LastName</label>
+        <input type="text" class="form-control" id="lastName" name="lastName" required>
+        </div>
+
+        <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="text" class="form-control" id="email" name="email" required>
+        </div>
+
+
+        <div class="mb-3">
+        <label for="phoneNumber" class="form-label">PhoneNumber</label>
+        <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" required>
+        </div>
+
+       <div class="mb-3">
+        <label for="department" class="form-label">Department</label>
+        <input type="text" class="form-control" id="department" name="department" required>
+       </div>
+
+       <div class="mb-3">
+        <label for="hiredate" class="form-label">hiredate</label>
+        <input type="text" class="form-control" id="hiredate" name="hiredate" required>
+      </div>
+
+    <div class="mb-3">
+        <label for="designation" class="form-label">Designation</label>
+        <input type="text" class="form-control" id="designation" name="designation" required>
+    </div>
+
+    <button type="button" id="saveCollegeFaculty" class="btn btn-primary">Insert</button>
+    <button type="button" id="updatecollegeFaculty" class="btn btn-primary">Update</button>
+  
+</div>
+
+<div class="container mt-5">
+    <h2 class="mb-4">CollegeFaculty Record Table</h2>
+    <table class="table table-bordered table-striped table-hover" id="collegeFacultyTable">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">FacultyID </th>
+                <th scope="col">FirstName</th>
+                <th scope="col">LastName</th>
+                <th scope="col">Email</th>
+                <th scope="col">PhoneNumber</th>
+                <th scope="col">Department</th>
+                <th scope="col">HireDate</th>
+                <th scope="col">Designation</th>
+                <th scope="col">Action  </th>
+
+            </tr>
+        </thead>
+        <tbody id="collegeFacultyTableBody">
+        </tbody>
+    </table>
+
+
+</div>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/js/collegeFaculty.js"></script>

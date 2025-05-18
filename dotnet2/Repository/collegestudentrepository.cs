@@ -9,18 +9,18 @@ using System.Data.Common;
 
 namespace collegemanagementfirstproject.Repository
 {
-    public class Collegestudentrepository : Icollegestudent
+    public class collegestudentrepository : Icollegestudent
     {
         private readonly IConnection _connect;
 
-        public Collegestudentrepository(IConnection connection)
+        public collegestudentrepository(IConnection connection)
         {
             connection=_connect = connection;
         }
 
      
 
-        public void Insertcollegestudent(collegestudentModel crs)
+        public void Insertcollegestudent(collegestudentModel cs)
         {
             using (var con = _connect.Connect())//look .connect what happen
             {
@@ -28,10 +28,10 @@ namespace collegemanagementfirstproject.Repository
                 {
                     con.Open();
                     DynamicParameters param = new DynamicParameters();
-                    //param.Add("@Id", crs.Id);
-                    param.Add("@name", crs.Name);
-                    param.Add("@age", crs.age);
-                    param.Add("@rollno", crs.rollno);
+                    
+                    param.Add("@name", cs.Name);
+                    param.Add("@Email", cs.Email);
+                
                     param.Add("@Flag", "Insert");
                     con.Execute("collegestudentsp", param, commandType: CommandType.StoredProcedure);
 
@@ -57,8 +57,7 @@ namespace collegemanagementfirstproject.Repository
                     DynamicParameters param = new DynamicParameters();
                     param.Add("@Id", crs.Id);
                     param.Add("@name", crs.Name);
-                    param.Add("@age", crs.age);
-                    param.Add("@rollno", crs.rollno);
+                    param.Add("@Email", crs.Email);
                     param.Add("@Flag", "Update");
                     con.Execute("collegestudentsp", param, commandType: CommandType.StoredProcedure);
 

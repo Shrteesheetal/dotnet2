@@ -59,9 +59,9 @@ namespace collegemanagementfirstproject.Controllers
         }
         [HttpPost]
 
-        public ActionResult Deletecollegestudent(collegestudentModel cs)
+        public ActionResult Deletecollegestudent(collegestudentModel test)
         {
-            _cstudentRepo.Deletecollegestudent(cs);
+            _cstudentRepo.Deletecollegestudent(test);
             return RedirectToAction(nameof(Index));
         }
 

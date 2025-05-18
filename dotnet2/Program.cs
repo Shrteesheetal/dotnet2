@@ -1,3 +1,4 @@
+using collegemanagementfirstproject.Controllers;
 using collegemanagementfirstproject.Interface;
 using collegemanagementfirstproject.Repository;
 using System.Data.Common;
@@ -7,7 +8,10 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddSingleton<IConnection, RDBconnection>();
-builder.Services.AddScoped<Icollegestudent, Collegestudentrepository>();
+builder.Services.AddScoped<Icollegestudent, collegestudentrepository>();
+builder.Services.AddScoped<IcollegeFaculty, CollegeFacultyrepo>();
+builder.Services.AddScoped<Icollegedepart, collegeDepartRepo>();
+
 
 var app = builder.Build();
 
