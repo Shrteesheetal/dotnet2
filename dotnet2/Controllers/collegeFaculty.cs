@@ -48,6 +48,7 @@ namespace collegemanagementfirstproject.Controllers
         [HttpGet]
         public JsonResult AllcollegeFaculty()
         {
+            
             var data = _cfrepo.GetAllcollegeFaculty();
 
             return Json(data);
@@ -75,9 +76,10 @@ namespace collegemanagementfirstproject.Controllers
         }
 
         [HttpGet]
-        public JsonResult GetById(int Id)
+        //url: '/collegeFaculty/GetCollegeFacultyByID?FacultyID=' + id,
+        public JsonResult GetCollegeFacultyByID(int FacultyID)
         {
-            var cfaculty = _cfrepo.GetById(Id);
+            var cfaculty = _cfrepo.GetById(FacultyID);
             return Json(cfaculty);
         }
         [HttpGet]

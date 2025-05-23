@@ -74,7 +74,7 @@ namespace collegemanagementfirstproject.Repository
 
             }
         }
-        public collegeFacultymodel GetById(int id)
+        public collegeFacultymodel GetById(int facultyID)
         {
             using (var con = _connect.Connect())//look .connect what happen
             {
@@ -82,7 +82,7 @@ namespace collegemanagementfirstproject.Repository
                 {
                     con.Open();
                     DynamicParameters param = new DynamicParameters();
-                    param.Add("@FacultyID",id);
+                    param.Add("@FacultyID", facultyID);
                     param.Add("@Flag", "GetById");
                     var data = SqlMapper.Query<collegeFacultymodel>(con, "facultyStoreProcedure", param, commandType: CommandType.StoredProcedure).FirstOrDefault();
                     return data;

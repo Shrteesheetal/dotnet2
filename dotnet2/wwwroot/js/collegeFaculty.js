@@ -8,23 +8,22 @@ window.app.collegeFaculty = (function ($) {
     var initUi = function () {
         debugger;
         GetCollegeFacultyList();
-       // $('#updateCollegeFaculty').hide(); // Hide update button on load
+      /*  $('#updateCollegeFaculty').hide();*/ // Hide update button on load
     };
 
     // Register event handlers
     var initEvent = function () {
-        $("#saveCollegeFaculty").on("click", InsertcollegeFaculty
-
-        );
-        //$("#updateCollegeFaculty").on("click", UpdateCollegeFaculty);
+        $("#saveCollegeFaculty").on("click", InsertcollegeFaculty );
+        $("#updateCollegeFaculty").on("click", UpdatecollegeFaculty);
     };
 
-    //// Event delegation for edit button
-    //$(document).on("click", ".editCollegeFaculty", function () {
-    //    debugger;
-    //    var id = $(this).data('id');
-    //    GetCollegeFacultyByID(id);
-    //});
+    // Event delegation for edit button
+    $(document).on("click", ".editcollegeFaculty", function () {
+        debugger;
+        var id = $(this).data('id');
+        GetCollegeFacultyByID(id);
+    });
+
 
      //Insert Faculty
     var InsertcollegeFaculty = function (e) {
@@ -57,51 +56,51 @@ window.app.collegeFaculty = (function ($) {
         });
     };
 
-    //// Update Faculty
-    //var UpdateCollegeFaculty = function (e) {
-    //    e.preventDefault();
-    //    debugger;
+     //Update Faculty
+    var UpdatecollegeFaculty = function (e) {
+        e.preventDefault();
+        debugger;
 
-    //    var data = {
-    //        FacultyID: $('#facultyId').val(),
-    //        FirstName: $('#firstName').val(),
-    //        LastName: $('#lastName').val(),
-    //        Email: $('#email').val(),
-    //        PhoneNumber: $('#phoneNumber').val(),
-    //        Department: $('#department').val(),
-    //        HireDate: $('#hireDate').val(),
-    //        Designation: $('#designation').val()
-    //    };
+        var data = {
+            FacultyID: $('#facultyID').val(),
+            FirstName: $('#firstName').val(),
+            LastName: $('#lastName').val(),
+            Email: $('#email').val(),
+            PhoneNumber: $('#phoneNumber').val(),
+            Department: $('#department').val(),
+            HireDate: $('#hireDate').val(),
+            Designation: $('#designation').val()
+        };
 
-    //    $.ajax({
-    //        url: '/collegeFaculty/UpdatecollegeFaculty',
-    //        method: 'post',
-    //        dataType: 'json',
-    //        data: data,
-    //        success: function (response) {
-    //            alert(response.message || "Faculty updated successfully");
-    //            GetCollegeFacultyList();
-    //            ResetForm();
-    //        },
-    //        error: function (xhr, status, error) {
-    //            alert("Unable to update: " + error);
-    //        }
-    //    });
-    //};
+        $.ajax({
+            url: '/collegeFaculty/UpdatecollegeFaculty',
+            method: 'post',
+            dataType: 'json',
+            data: data,
+            success: function (response) {
+                alert(response.message || "Faculty updated successfully");
+                GetCollegeFacultyList();
+                ResetForm();
+            },
+            error: function (xhr, status, error) {
+                alert("Unable to update: " + error);
+            }
+        });
+    };
 
-    //// Reset form
-    //var ResetForm = function () {
-    //    $('#facultyId').val('');
-    //    $('#firstName').val('');
-    //    $('#lastName').val('');
-    //    $('#email').val('');
-    //    $('#phoneNumber').val('');
-    //    $('#department').val('');
-    //    $('#hireDate').val('');
-    //    $('#designation').val('');
-    //    $('#saveCollegeFaculty').show();
-    //    $('#updateCollegeFaculty').hide();
-    //};
+    // Reset form
+    var ResetForm = function () {
+        $('#facultyID').val('');
+        $('#firstName').val('');
+        $('#lastName').val('');
+        $('#email').val('');
+        $('#phoneNumber').val('');
+        $('#department').val('');
+        $('#hireDate').val('');
+        $('#designation').val('');
+        $('#saveCollegeFaculty').show();
+        $('#updateCollegeFaculty').hide();
+    };
 
     // get all faculty list
     var GetCollegeFacultyList = function () {
@@ -125,9 +124,9 @@ window.app.collegeFaculty = (function ($) {
                     html += '<td>' + item.hireDate + '</td>';
                     html += '<td>' + item.designation + '</td>';
                     html += '<td>';
-                    html += '<button class="btn btn-info editcollegefaculty" data-id="' + item.facultyID + '">edit</button>';
+                    html += '<button class="btn btn-info editcollegeFaculty" data-id="' + item.facultyID + '">edit</button>';
 
-                    html += '<button class="btn btn-info deletecollegefaculty" data-id="' + item.facultyID + '">delete</button>';
+                    html += '<button class="btn btn-info deletecollegeFaculty" data-id="' + item.facultyID + '">delete</button>';
                     html += '</td></tr>';
                     i++;
                 });
@@ -140,23 +139,26 @@ window.app.collegeFaculty = (function ($) {
     };
 
     // get single faculty by id
-    var getcollegefacultybyid = function (id) {
+    var GetCollegeFacultyByID = function (id) {
+
+        debugger;
         $.ajax({
-            url: '/collegefaculty/getfacultybyid?FacultyID=' + id,
+            url: '/collegeFaculty/GetCollegeFacultyByID?FacultyID=' + id,
             method: 'get',
             datatype: 'json',
             success: function (item) {
-                $('#FacultyID').val(item.facultyid);
-                $('#FirstName').val(item.firstname);
-                $('#LastName').val(item.lastname);
-                $('#Email').val(item.email);
-                $('#PhoneNumber').val(item.phonenumber);
-                $('#Department').val(item.department);
-                $('#HireDate').val(item.hiredate);
-                $('#Designation').val(item.designation);
+                debugger;
+                $('#facultyID').val(item.facultyID);
+                $('#firstName').val(item.firstName);
+                $('#lastName').val(item.lastName);
+                $('#email').val(item.email);
+                $('#phoneNumber').val(item.phonenumber);
+                $('#department').val(item.department);
+                $('#hireDate').val(item.hireDate);
+                $('#designation').val(item.designation);
 
-                //$('#savecollegefaculty').hide();
-                //$('#updatecollegefaculty').show();
+                $('#saveCollegefaculty').hide();
+                $('#updateCollegefaculty').show();
             },
             error: function () {
                 alert("unable to retrieve faculty details.");
@@ -172,6 +174,7 @@ window.app.collegeFaculty = (function ($) {
 
     return {
         onDocumentReady: onDocumentReady,
+        GetCollegeFacultyByID:GetCollegeFacultyByID
     
     };
 
